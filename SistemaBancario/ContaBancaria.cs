@@ -50,8 +50,7 @@ namespace SistemaBancario
             Console.WriteLine($"Titular: {Titular}");
             Console.WriteLine($"Número da Conta: {NumeroConta}");
             Console.WriteLine($"Saldo Atual: R${Saldo:F2}");
-            //Talvez seja criativo colocar sobre as transações realizadas, data e hora, mas isso é um extra.
         }
     }
-   
+    
  }

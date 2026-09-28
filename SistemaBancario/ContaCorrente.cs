@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SistemaBancario
 {
-    public class ContaCorrente : ContaBancaria
+    public class ContaCorrente : ContaBancaria, ITributavel
     {
         public decimal TaxaParaSaque { get; private set; }
         = 2.50m;
@@ -16,8 +16,11 @@ namespace SistemaBancario
             decimal valorTotal = valor + TaxaParaSaque;
             Console.WriteLine($"\nValor do saque: R${valor:F2}. Taxa de saque: R${TaxaParaSaque}. Valor total a ser debitado: R${valorTotal:F2}.");
             return base.Sacar(valorTotal);
-
         }
 
+        public decimal CalcularTributo()
+        {
+            return TaxaParaSaque;
+        }
     }
 }
