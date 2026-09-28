@@ -21,8 +21,8 @@ namespace SistemaBancario
             {
                 Saldo += valor;
                 LimiteEmprestimo -= valor;
-                Console.WriteLine($"Empréstimo de R${valor} aprovado!");
-                Console.WriteLine($"Novo saldo: R${Saldo}");
+                Console.WriteLine($"Empréstimo de R${valor:F2} aprovado!");
+                Console.WriteLine($"Novo saldo: R${Saldo:F2}");
             }
             else
             {

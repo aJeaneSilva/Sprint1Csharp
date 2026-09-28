@@ -27,7 +27,6 @@ namespace SistemaBancario
             Console.ResetColor();
         } //---------------
 
-
         static void Main(string[] args)
         {
             List<ContaBancaria> contas = new List<ContaBancaria>();

@@ -24,7 +24,7 @@ namespace SistemaBancario
                 throw new ArgumentException("Adicione um valor maior que zero.");
             }
             Saldo += valor;
-            Console.WriteLine($"Depósito de R${valor} realizado com sucesso! Novo saldo: R${Saldo}");
+            Console.WriteLine($"Depósito de R${valor:F2} realizado com sucesso! Novo saldo: R${Saldo:F2}");
         }
         public virtual bool Sacar(decimal valor)
         {
@@ -35,12 +35,12 @@ namespace SistemaBancario
             if (Saldo >= valor)
             {
                 Saldo -= valor;
-                Console.WriteLine($"Saque de R${valor} realizado com sucesso! Novo saldo: R${Saldo}");
+                Console.WriteLine($"Saque de R${valor:F2} realizado com sucesso! Novo saldo: R${Saldo:F2}");
                 return true;
             }
             else
             {
-                Console.WriteLine($"Seu saldo é de R${Saldo}. Infelizmente não é possivel sacar.");
+                Console.WriteLine($"Seu saldo é de R${Saldo:F2}. Infelizmente não é possivel sacar.");
                 return false;
 
             }
@@ -49,7 +49,7 @@ namespace SistemaBancario
         {
             Console.WriteLine($"Titular: {Titular}");
             Console.WriteLine($"Número da Conta: {NumeroConta}");
-            Console.WriteLine($"Saldo Atual: R${Saldo}");
+            Console.WriteLine($"Saldo Atual: R${Saldo:F2}");
             //Talvez seja criativo colocar sobre as transações realizadas, data e hora, mas isso é um extra.
         }
     }

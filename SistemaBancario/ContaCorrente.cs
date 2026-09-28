@@ -14,7 +14,7 @@ namespace SistemaBancario
         public override bool Sacar(decimal valor)
         {
             decimal valorTotal = valor + TaxaParaSaque;
-            Console.WriteLine($"\nValor do saque: R${valor}. Taxa de saque: R${TaxaParaSaque}. Valor total a ser debitado: R${valorTotal}.");
+            Console.WriteLine($"\nValor do saque: R${valor:F2}. Taxa de saque: R${TaxaParaSaque}. Valor total a ser debitado: R${valorTotal:F2}.");
             return base.Sacar(valorTotal);
 
         }
