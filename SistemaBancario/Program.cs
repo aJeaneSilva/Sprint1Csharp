@@ -60,7 +60,7 @@ namespace SistemaBancario
                     }
                     else
                     {
-                        Console.WriteLine($"\n[Conta Ativa: {contaAtual.Titular}]");
+                        Console.WriteLine($"\n[Conta Ativa: {contaAtual.Titular} - {contaAtual.GetType().Name}]");
                         Console.WriteLine("\n1 - Criar conta Corrente");
                         Console.WriteLine("2 - Criar conta Poupança");
                         Console.WriteLine("3 - Criar conta Empresarial");
@@ -86,24 +86,78 @@ namespace SistemaBancario
 
                     switch (opcao)
                     {
-                        case 1:
 
-                            Console.WriteLine("Digite o nome do titular da conta corrente:");
-                            string t1 = Console.ReadLine();
-                            Console.WriteLine("Digite o saldo inicial: R$ ");
-                            decimal s1 = decimal.Parse(Console.ReadLine());
+                        case 1:
+                            string t1;
+                            do
+                            {
+                                Console.WriteLine("Digite o nome do titular da conta corrente:");
+                                t1 = Console.ReadLine();
+
+                                if (string.IsNullOrWhiteSpace(t1) || !t1.All(c => char.IsLetter(c) || char.IsWhiteSpace(c)))
+                                {
+                                    Console.WriteLine("Nome inválido! Digite apenas letras.\n");
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            } while (true);
+
+                            decimal s1;
+                            do
+                            {
+                                Console.Write("Digite o saldo inicial: R$ ");
+                                if (!decimal.TryParse(Console.ReadLine(), out s1) || s1 < 0)
+                                {
+                                    Console.WriteLine("Valor inválido! Digite um saldo positivo ou zero.\n");
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            } while (true);
+
                             contaAtual = new ContaCorrente(t1, contador++, s1);
                             contas.Add(contaAtual);
+
                             Console.WriteLine($"\nConta Corrente criada com sucesso! Número da conta: {contador - 1}");
                             Console.WriteLine("\nPressione qualquer tecla para continuar...");
-                            Console.ReadKey(); break;
+                            Console.ReadKey();
+                            break;
+
 
                         case 2:
+                            string t2;
+                            do
+                            {
+                                Console.WriteLine("Digite o nome do titular da conta poupança:");
+                                t2 = Console.ReadLine();
 
-                            Console.WriteLine("Digite o nome do titular da conta poupança:");
-                            string t2 = Console.ReadLine();
-                            Console.WriteLine("Digite o saldo inicial: R$ ");
-                            decimal s2 = decimal.Parse(Console.ReadLine());
+                                if (string.IsNullOrWhiteSpace(t2) || !t2.All(c => char.IsLetter(c) || char.IsWhiteSpace(c)))
+                                {
+                                    Console.WriteLine("Nome inválido! Digite apenas letras.\n");
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            } while (true);
+
+                            decimal s2;
+                            do
+                            {
+                                Console.Write("Digite o saldo inicial: R$ ");
+                                if (!decimal.TryParse(Console.ReadLine(), out s2) || s2 < 0)
+                                {
+                                    Console.WriteLine("Valor inválido! Digite um saldo positivo ou zero.\n");
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            } while (true);
+
                             contaAtual = new ContaPoupanca(t2, contador++, s2);
                             contas.Add(contaAtual);
                             Console.WriteLine($"\nConta Poupança criada com sucesso! Número da conta: {contador - 1}");
@@ -111,18 +165,48 @@ namespace SistemaBancario
                             Console.ReadKey();
                             break;
 
+
+
                         case 3:
 
-                            Console.WriteLine("Digite o nome do titular da conta empresarial:");
-                            string t3 = Console.ReadLine();
-                            Console.WriteLine("Digite o saldo inicial: R$ ");
-                            decimal s3 = decimal.Parse(Console.ReadLine());
+                            string t3;
+                            do
+                            {
+                                Console.WriteLine("Digite o nome do titular da conta empresarial:");
+                                t3 = Console.ReadLine();
+
+                                if (string.IsNullOrWhiteSpace(t3) || !t3.All(c => char.IsLetter(c) || char.IsWhiteSpace(c)))
+                                {
+                                    Console.WriteLine("Nome inválido! Digite apenas letras.\n");
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            } while (true);
+
+                            decimal s3;
+                            do
+                            {
+                                Console.Write("Digite o saldo inicial: R$ ");
+                                if (!decimal.TryParse(Console.ReadLine(), out s3) || s3 < 0)
+                                {
+                                    Console.WriteLine("Valor inválido! Digite um saldo positivo ou zero.\n");
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            } while (true);
+
                             contaAtual = new ContaEmpresarial(t3, contador++, s3);
                             contas.Add(contaAtual);
                             Console.WriteLine($"\nConta Empresarial criada com sucesso! Número da conta: {contador - 1}");
                             Console.WriteLine("\nPressione qualquer tecla para continuar...");
                             Console.ReadKey();
                             break;
+
+
 
                         case 4:
                             if (contaAtual != null)
